@@ -164,6 +164,7 @@ public class RuleMemberValidator {
      * Requires the validated member to be non-static
      */
     private static final class MemberMustBeNonStaticOrAlsoClassRule implements RuleValidator {
+        @Override
         public void validate(FrameworkMember<?> member, Class<? extends Annotation> annotation, List<Throwable> errors) {
             boolean isMethodRuleMember = isMethodRule(member);
             boolean isClassRuleAnnotated = (member.getAnnotation(ClassRule.class) != null);
@@ -189,6 +190,7 @@ public class RuleMemberValidator {
      * Requires the member to be static
      */
     private static final class MemberMustBeStatic implements RuleValidator {
+        @Override
         public void validate(FrameworkMember<?> member, Class<? extends Annotation> annotation, List<Throwable> errors) {
             if (!member.isStatic()) {
                 errors.add(new ValidationError(member, annotation,
@@ -201,6 +203,7 @@ public class RuleMemberValidator {
      * Requires the member's declaring class to be public
      */
     private static final class DeclaringClassMustBePublic implements RuleValidator {
+        @Override
         public void validate(FrameworkMember<?> member, Class<? extends Annotation> annotation, List<Throwable> errors) {
             if (!isDeclaringClassPublic(member)) {
                 errors.add(new ValidationError(member, annotation,
@@ -217,6 +220,7 @@ public class RuleMemberValidator {
      * Requires the member to be public
      */
     private static final class MemberMustBePublic implements RuleValidator {
+        @Override
         public void validate(FrameworkMember<?> member, Class<? extends Annotation> annotation, List<Throwable> errors) {
             if (!member.isPublic()) {
                 errors.add(new ValidationError(member, annotation,
@@ -229,6 +233,7 @@ public class RuleMemberValidator {
      * Requires the member is a field implementing {@link org.junit.rules.MethodRule} or {@link org.junit.rules.TestRule}
      */
     private static final class FieldMustBeARule implements RuleValidator {
+        @Override
         public void validate(FrameworkMember<?> member, Class<? extends Annotation> annotation, List<Throwable> errors) {
             if (!isRuleType(member)) {
                 errors.add(new ValidationError(member, annotation,
@@ -242,6 +247,7 @@ public class RuleMemberValidator {
      * {@link org.junit.rules.TestRule}
      */
     private static final class MethodMustBeARule implements RuleValidator {
+        @Override
         public void validate(FrameworkMember<?> member, Class<? extends Annotation> annotation, List<Throwable> errors) {
             if (!isRuleType(member)) {
                 errors.add(new ValidationError(member, annotation,
@@ -254,6 +260,7 @@ public class RuleMemberValidator {
      * Require the member to return an implementation of {@link org.junit.rules.TestRule}
      */
     private static final class MethodMustBeATestRule implements RuleValidator {
+        @Override
         public void validate(FrameworkMember<?> member,
                 Class<? extends Annotation> annotation, List<Throwable> errors) {
             if (!isTestRule(member)) {
@@ -268,6 +275,7 @@ public class RuleMemberValidator {
      */
     private static final class FieldMustBeATestRule implements RuleValidator {
 
+        @Override
         public void validate(FrameworkMember<?> member,
                 Class<? extends Annotation> annotation, List<Throwable> errors) {
             if (!isTestRule(member)) {

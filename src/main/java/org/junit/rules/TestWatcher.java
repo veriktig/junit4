@@ -50,6 +50,7 @@ import org.junit.runners.model.Statement;
  * @since 4.9
  */
 public abstract class TestWatcher implements TestRule {
+    @Override
     public Statement apply(final Statement base, final Description description) {
         return new Statement() {
             @Override

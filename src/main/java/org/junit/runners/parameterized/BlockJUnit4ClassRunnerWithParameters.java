@@ -66,7 +66,7 @@ public class BlockJUnit4ClassRunnerWithParameters extends
                             + ", available parameters: " + parameters.length
                             + ".");
         }
-        Object testClassInstance = getTestClass().getJavaClass().newInstance();
+        Object testClassInstance = getTestClass().getJavaClass().getDeclaredConstructor().newInstance();
         for (FrameworkField each : annotatedFieldsByParameter) {
             Field field = each.getField();
             Parameter annotation = field.getAnnotation(Parameter.class);

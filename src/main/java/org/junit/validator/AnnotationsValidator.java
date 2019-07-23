@@ -30,6 +30,7 @@ public final class AnnotationsValidator implements TestClassValidator {
      *            the {@link TestClass} that is validated.
      * @return the errors found by the validator.
      */
+    @Override
     public List<Exception> validateTestClass(TestClass testClass) {
         List<Exception> validationErrors= new ArrayList<Exception>();
         for (AnnotatableValidator<?> validator : VALIDATORS) {

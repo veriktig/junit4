@@ -106,6 +106,7 @@ public class ResultPrinter implements TestListener {
     /**
      * @see junit.framework.TestListener#addError(Test, Throwable)
      */
+    @Override
     public void addError(Test test, Throwable e) {
         getWriter().print("E");
     }
@@ -113,6 +114,7 @@ public class ResultPrinter implements TestListener {
     /**
      * @see junit.framework.TestListener#addFailure(Test, AssertionFailedError)
      */
+    @Override
     public void addFailure(Test test, AssertionFailedError t) {
         getWriter().print("F");
     }
@@ -120,12 +122,14 @@ public class ResultPrinter implements TestListener {
     /**
      * @see junit.framework.TestListener#endTest(Test)
      */
+    @Override
     public void endTest(Test test) {
     }
 
     /**
      * @see junit.framework.TestListener#startTest(Test)
      */
+    @Override
     public void startTest(Test test) {
         getWriter().print(".");
         if (fColumn++ >= 40) {

@@ -28,7 +28,7 @@ public class AnnotationValidatorFactory {
 
         Class<? extends AnnotationValidator> clazz = validateWithAnnotation.value();
         try {
-            AnnotationValidator annotationValidator = clazz.newInstance();
+            AnnotationValidator annotationValidator = clazz.getDeclaredConstructor().newInstance();
             VALIDATORS_FOR_ANNOTATION_TYPES.putIfAbsent(validateWithAnnotation, annotationValidator);
             return VALIDATORS_FOR_ANNOTATION_TYPES.get(validateWithAnnotation);
         } catch (Exception e) {

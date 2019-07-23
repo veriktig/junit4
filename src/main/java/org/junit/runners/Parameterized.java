@@ -6,6 +6,7 @@ import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import java.lang.reflect.InvocationTargetException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -403,7 +404,14 @@ public class Parameterized extends Suite {
             } else {
                 Class<? extends ParametersRunnerFactory> factoryClass = annotation
                         .value();
-                return factoryClass.newInstance();
+                try {
+                    return factoryClass.getDeclaredConstructor().newInstance();
+                } catch (IllegalArgumentException | InvocationTargetException
+                        | NoSuchMethodException | SecurityException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                    return DEFAULT_FACTORY;
+                }
             }
         }
 

@@ -74,10 +74,12 @@ public abstract class ParentRunner<T> extends Runner implements Filterable,
     private volatile List<T> filteredChildren = null;
 
     private volatile RunnerScheduler scheduler = new RunnerScheduler() {
+        @Override
         public void schedule(Runnable childStatement) {
             childStatement.run();
         }
 
+        @Override
         public void finished() {
             // do nothing
         }
@@ -326,6 +328,7 @@ public abstract class ParentRunner<T> extends Runner implements Filterable,
         try {
             for (final T each : getFilteredChildren()) {
                 currentScheduler.schedule(new Runnable() {
+                    @Override
                     public void run() {
                         ParentRunner.this.runChild(each, notifier);
                     }
@@ -425,6 +428,7 @@ public abstract class ParentRunner<T> extends Runner implements Filterable,
     // Implementation of Filterable and Sortable
     //
 
+    @Override
     public void filter(Filter filter) throws NoTestsRemainException {
         childrenLock.lock();
         try {
@@ -450,6 +454,7 @@ public abstract class ParentRunner<T> extends Runner implements Filterable,
         }
     }
 
+    @Override
     public void sort(Sorter sorter) {
         childrenLock.lock();
         try {
@@ -469,6 +474,7 @@ public abstract class ParentRunner<T> extends Runner implements Filterable,
      *
      * @since 4.13
      */
+    @Override
     public void order(Orderer orderer) throws InvalidOrderingException {
         childrenLock.lock();
         try {
@@ -533,6 +539,7 @@ public abstract class ParentRunner<T> extends Runner implements Filterable,
 
     private Comparator<? super T> comparator(final Sorter sorter) {
         return new Comparator<T>() {
+            @Override
             public int compare(T o1, T o2) {
                 return sorter.compare(describeChild(o1), describeChild(o2));
             }
@@ -550,6 +557,7 @@ public abstract class ParentRunner<T> extends Runner implements Filterable,
     private static class ClassRuleCollector implements MemberValueConsumer<TestRule> {
         final List<RuleContainer.RuleEntry> entries = new ArrayList<RuleContainer.RuleEntry>();
 
+        @Override
         public void accept(FrameworkMember<?> member, TestRule value) {
             ClassRule rule = member.getAnnotation(ClassRule.class);
             entries.add(new RuleContainer.RuleEntry(value, RuleContainer.RuleEntry.TYPE_TEST_RULE,

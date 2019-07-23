@@ -45,7 +45,8 @@ final class ReflectiveThreadMXBean implements ThreadMXBean {
   /**
    * {@inheritDoc}
    */
-  public long getThreadCpuTime(long id) {
+  @Override
+public long getThreadCpuTime(long id) {
     if (Holder.getThreadCpuTimeMethod != null) {
       Exception error = null;
       try {
@@ -71,7 +72,8 @@ final class ReflectiveThreadMXBean implements ThreadMXBean {
   /**
    * {@inheritDoc}
    */
-  public boolean isThreadCpuTimeSupported() {
+  @Override
+public boolean isThreadCpuTimeSupported() {
     if (Holder.isThreadCpuTimeSupportedMethod != null) {
       try {
         return (Boolean) Holder.isThreadCpuTimeSupportedMethod.invoke(threadMxBean);

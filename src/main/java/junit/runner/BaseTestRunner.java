@@ -37,6 +37,7 @@ public abstract class BaseTestRunner implements TestListener {
     /*
     * Implementation of TestListener
     */
+    @Override
     public synchronized void startTest(Test test) {
         testStarted(test.toString());
     }
@@ -68,14 +69,17 @@ public abstract class BaseTestRunner implements TestListener {
         getPreferences().put(key, value);
     }
 
+    @Override
     public synchronized void endTest(Test test) {
         testEnded(test.toString());
     }
 
+    @Override
     public synchronized void addError(final Test test, final Throwable e) {
         testFailed(TestRunListener.STATUS_ERROR, test, e);
     }
 
+    @Override
     public synchronized void addFailure(final Test test, final AssertionFailedError e) {
         testFailed(TestRunListener.STATUS_FAILURE, test, e);
     }

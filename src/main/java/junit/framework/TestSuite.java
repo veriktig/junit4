@@ -208,6 +208,7 @@ public class TestSuite implements Test {
     /**
      * Counts the number of test cases that will be run by this test.
      */
+    @Override
     public int countTestCases() {
         int count = 0;
         for (Test each : fTests) {
@@ -228,6 +229,7 @@ public class TestSuite implements Test {
     /**
      * Runs the tests and collects their result in a TestResult.
      */
+    @Override
     public void run(TestResult result) {
         for (Test each : fTests) {
             if (result.shouldStop()) {

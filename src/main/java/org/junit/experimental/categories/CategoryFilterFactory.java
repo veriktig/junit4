@@ -18,6 +18,7 @@ abstract class CategoryFilterFactory implements FilterFactory {
      *
      * @param params Parameters needed to create the {@link Filter}
      */
+    @Override
     public Filter createFilter(FilterFactoryParams params) throws FilterNotCreatedException {
         try {
             return createFilter(parseCategories(params.getArgs()));

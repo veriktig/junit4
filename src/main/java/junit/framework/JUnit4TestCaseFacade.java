@@ -15,15 +15,18 @@ public class JUnit4TestCaseFacade implements Test, Describable {
         return getDescription().toString();
     }
 
+    @Override
     public int countTestCases() {
         return 1;
     }
 
+    @Override
     public void run(TestResult result) {
         throw new RuntimeException(
                 "This test stub created only for informational purposes.");
     }
 
+    @Override
     public Description getDescription() {
         return fDescription;
     }

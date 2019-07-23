@@ -144,6 +144,7 @@ public class Stopwatch implements TestRule {
         endNanos = clock.nanoTime();
     }
 
+    @Override
     public final Statement apply(Statement base, Description description) {
         return new InternalWatcher().apply(base, description);
     }

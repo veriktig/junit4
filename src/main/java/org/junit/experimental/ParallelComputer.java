@@ -34,10 +34,12 @@ public class ParallelComputer extends Computer {
             ((ParentRunner<?>) runner).setScheduler(new RunnerScheduler() {
                 private final ExecutorService fService = Executors.newCachedThreadPool();
 
+                @Override
                 public void schedule(Runnable childStatement) {
                     fService.submit(childStatement);
                 }
 
+                @Override
                 public void finished() {
                     try {
                         fService.shutdown();

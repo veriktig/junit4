@@ -197,6 +197,7 @@ public class FrameworkMethod extends FrameworkMember<FrameworkMethod> {
     /**
      * Returns the annotations on this method
      */
+    @Override
     public Annotation[] getAnnotations() {
         return method.getAnnotations();
     }
@@ -205,6 +206,7 @@ public class FrameworkMethod extends FrameworkMember<FrameworkMethod> {
      * Returns the annotation of type {@code annotationType} on this method, if
      * one exists.
      */
+    @Override
     public <T extends Annotation> T getAnnotation(Class<T> annotationType) {
         return method.getAnnotation(annotationType);
     }

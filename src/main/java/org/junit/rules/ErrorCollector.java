@@ -79,6 +79,7 @@ public class ErrorCollector extends Verifier {
     @Deprecated
     public <T> void checkThat(final String reason, final T value, final Matcher<T> matcher) {
         checkSucceeds(new Callable<Object>() {
+            @Override
             public Object call() throws Exception {
                 assertThat(reason, value, matcher);
                 return value;

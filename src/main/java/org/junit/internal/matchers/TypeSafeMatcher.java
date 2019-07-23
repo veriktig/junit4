@@ -54,6 +54,7 @@ public abstract class TypeSafeMatcher<T> extends BaseMatcher<T> {
      * If you need to override this, there's no point on extending TypeSafeMatcher.
      * Instead, extend the {@link BaseMatcher}.
      */
+    @Override
     @SuppressWarnings({"unchecked"})
     public final boolean matches(Object item) {
         return item != null

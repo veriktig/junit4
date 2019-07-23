@@ -209,6 +209,7 @@ public class TestClass implements Annotatable {
     /**
      * Returns the annotations on this class
      */
+    @Override
     public Annotation[] getAnnotations() {
         if (clazz == null) {
             return new Annotation[0];
@@ -216,6 +217,7 @@ public class TestClass implements Annotatable {
         return clazz.getAnnotations();
     }
 
+    @Override
     public <T extends Annotation> T getAnnotation(Class<T> annotationType) {
         if (clazz == null) {
             return null;
@@ -228,6 +230,7 @@ public class TestClass implements Annotatable {
         final List<T> results = new ArrayList<T>();
         collectAnnotatedFieldValues(test, annotationClass, valueClass,
                 new MemberValueConsumer<T>() {
+                    @Override
                     public void accept(FrameworkMember<?> member, T value) {
                         results.add(value);
                     }
@@ -262,6 +265,7 @@ public class TestClass implements Annotatable {
         final List<T> results = new ArrayList<T>();
         collectAnnotatedMethodValues(test, annotationClass, valueClass,
                 new MemberValueConsumer<T>() {
+                    @Override
                     public void accept(FrameworkMember<?> member, T value) {
                         results.add(value);
                     }
@@ -331,6 +335,7 @@ public class TestClass implements Annotatable {
      * Compares two fields by its name.
      */
     private static class FieldComparator implements Comparator<Field> {
+        @Override
         public int compare(Field left, Field right) {
             return left.getName().compareTo(right.getName());
         }
@@ -341,6 +346,7 @@ public class TestClass implements Annotatable {
      */
     private static class MethodComparator implements
             Comparator<FrameworkMethod> {
+        @Override
         public int compare(FrameworkMethod left, FrameworkMethod right) {
             return NAME_ASCENDING.compare(left.getMethod(), right.getMethod());
         }

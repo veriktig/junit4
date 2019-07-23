@@ -34,6 +34,7 @@ public class ErrorReportingRunner extends Runner {
         causes = getCauses(cause);
     }
     
+    @SuppressWarnings("unused")
     @Override
     public Description getDescription() {
         Description description = Description.createSuiteDescription(classNames);

@@ -10,7 +10,8 @@ final class FakeThreadMXBean implements ThreadMXBean {
    *
    * <p>Always throws an {@link UnsupportedOperationException}
    */
-  public long getThreadCpuTime(long id) {
+  @Override
+public long getThreadCpuTime(long id) {
     throw new UnsupportedOperationException();
   }
 
@@ -19,7 +20,8 @@ final class FakeThreadMXBean implements ThreadMXBean {
    *
    * <p>Always returns false.
    */
-  public boolean isThreadCpuTimeSupported() {
+  @Override
+public boolean isThreadCpuTimeSupported() {
     return false;
   }
 

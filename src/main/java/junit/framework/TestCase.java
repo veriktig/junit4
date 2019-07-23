@@ -98,6 +98,7 @@ public abstract class TestCase extends Assert implements Test {
     /**
      * Counts the number of test cases executed by run(TestResult result).
      */
+    @Override
     public int countTestCases() {
         return 1;
     }
@@ -126,6 +127,7 @@ public abstract class TestCase extends Assert implements Test {
     /**
      * Runs the test case and collects the results in TestResult.
      */
+    @Override
     public void run(TestResult result) {
         result.run(this);
     }

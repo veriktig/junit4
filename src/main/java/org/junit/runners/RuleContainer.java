@@ -39,6 +39,7 @@ class RuleContainer {
     }
 
     static final Comparator<RuleEntry> ENTRY_COMPARATOR = new Comparator<RuleEntry>() {
+        @Override
         public int compare(RuleEntry o1, RuleEntry o2) {
             int result = compareInt(o1.order, o2.order);
             return result != 0 ? result : o1.type - o2.type;

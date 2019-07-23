@@ -88,6 +88,7 @@ public class AssumptionViolatedException extends RuntimeException implements Sel
         return StringDescription.asString(this);
     }
 
+    @Override
     public void describeTo(Description description) {
         if (fAssumption != null) {
             description.appendText(fAssumption);

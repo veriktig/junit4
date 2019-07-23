@@ -20,6 +20,7 @@ public class Sorter extends Ordering implements Comparator<Description> {
      * NULL is a <code>Sorter</code> that leaves elements in an undefined order
      */
     public static final Sorter NULL = new Sorter(new Comparator<Description>() {
+        @Override
         public int compare(Description o1, Description o2) {
             return 0;
         }
@@ -56,6 +57,7 @@ public class Sorter extends Ordering implements Comparator<Description> {
         }
     }
 
+    @Override
     public int compare(Description o1, Description o2) {
         return comparator.compare(o1, o2);
     }

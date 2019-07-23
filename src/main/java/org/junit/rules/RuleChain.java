@@ -107,6 +107,7 @@ public class RuleChain implements TestRule {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Statement apply(Statement base, Description description) {
         return new RunRules(base, rulesStartingWithInnerMost, description);
     }

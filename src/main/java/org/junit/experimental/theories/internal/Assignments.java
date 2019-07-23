@@ -119,7 +119,7 @@ public class Assignments {
             }
         }
 
-        return cls.newInstance();
+        return cls.getDeclaredConstructor().newInstance();
     }
 
     public Object[] getConstructorArguments()

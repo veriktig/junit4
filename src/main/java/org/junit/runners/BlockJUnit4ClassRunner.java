@@ -393,6 +393,7 @@ public class BlockJUnit4ClassRunner extends ParentRunner<FrameworkMethod> {
                 target);
     }
 
+    @SuppressWarnings("unlikely-arg-type")
     private Statement withRules(FrameworkMethod method, Object target, Statement statement) {
         RuleContainer ruleContainer = new RuleContainer();
         CURRENT_RULE_CONTAINER.set(ruleContainer);
@@ -459,6 +460,7 @@ public class BlockJUnit4ClassRunner extends ParentRunner<FrameworkMethod> {
     private static class RuleCollector<T> implements MemberValueConsumer<T> {
         final List<T> result = new ArrayList<T>();
 
+        @Override
         public void accept(FrameworkMember<?> member, T value) {
             Rule rule = member.getAnnotation(Rule.class);
             if (rule != null) {

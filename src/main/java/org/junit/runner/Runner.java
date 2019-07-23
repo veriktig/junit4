@@ -24,6 +24,7 @@ public abstract class Runner implements Describable {
      * (non-Javadoc)
      * @see org.junit.runner.Describable#getDescription()
      */
+    @Override
     public abstract Description getDescription();
 
     /**

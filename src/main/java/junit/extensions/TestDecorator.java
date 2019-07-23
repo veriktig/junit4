@@ -1,6 +1,6 @@
 package junit.extensions;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 import junit.framework.Test;
 import junit.framework.TestResult;
 
@@ -9,7 +9,6 @@ import junit.framework.TestResult;
  * test decorators. Test decorator subclasses can be introduced to add behaviour
  * before or after a test is run.
  */
-@SuppressWarnings("deprecation")
 public class TestDecorator extends Assert implements Test {
     protected Test fTest;
 
@@ -24,10 +23,12 @@ public class TestDecorator extends Assert implements Test {
         fTest.run(result);
     }
 
+    @Override
     public int countTestCases() {
         return fTest.countTestCases();
     }
 
+    @Override
     public void run(TestResult result) {
         basicRun(result);
     }

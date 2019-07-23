@@ -22,6 +22,7 @@ public class PublicClassValidator implements TestClassValidator {
      * @return an empty list if the class is public or a list with a single
      *         exception otherwise.
      */
+    @Override
     public List<Exception> validateTestClass(TestClass testClass) {
         if (testClass.isPublic()) {
             return NO_VALIDATION_ERRORS;

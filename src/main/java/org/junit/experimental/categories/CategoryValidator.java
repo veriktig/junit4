@@ -26,7 +26,6 @@ import org.junit.validator.AnnotationValidator;
  */
 public final class CategoryValidator extends AnnotationValidator {
 
-    @SuppressWarnings("unchecked")
     private static final Set<Class<? extends Annotation>> INCOMPATIBLE_ANNOTATIONS = unmodifiableSet(new HashSet<Class<? extends Annotation>>(
             asList(BeforeClass.class, AfterClass.class, Before.class, After.class)));
 

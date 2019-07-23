@@ -11,6 +11,7 @@ import org.junit.runners.model.InitializationError;
  */
 public class BlockJUnit4ClassRunnerWithParametersFactory implements
         ParametersRunnerFactory {
+    @Override
     public Runner createRunnerForTestWithParameters(TestWithParameters test)
             throws InitializationError {
         return new BlockJUnit4ClassRunnerWithParameters(test);

@@ -2,8 +2,6 @@ package org.junit.runners.model;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
-import java.util.List;
-
 import org.junit.runners.BlockJUnit4ClassRunner;
 
 /**
@@ -37,10 +35,12 @@ public class FrameworkField extends FrameworkMember<FrameworkField> {
         return getField().getName();
     }
 
+    @Override
     public Annotation[] getAnnotations() {
         return field.getAnnotations();
     }
 
+    @Override
     public <T extends Annotation> T getAnnotation(Class<T> annotationType) {
         return field.getAnnotation(annotationType);
     }

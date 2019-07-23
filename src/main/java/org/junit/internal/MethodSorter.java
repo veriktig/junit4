@@ -11,6 +11,7 @@ public class MethodSorter {
      * DEFAULT sort order
      */
     public static final Comparator<Method> DEFAULT = new Comparator<Method>() {
+        @Override
         public int compare(Method m1, Method m2) {
             int i1 = m1.getName().hashCode();
             int i2 = m2.getName().hashCode();
@@ -25,6 +26,7 @@ public class MethodSorter {
      * Method name ascending lexicographic sort order, with {@link Method#toString()} as a tiebreaker
      */
     public static final Comparator<Method> NAME_ASCENDING = new Comparator<Method>() {
+        @Override
         public int compare(Method m1, Method m2) {
             final int comparison = m1.getName().compareTo(m2.getName());
             if (comparison != 0) {

@@ -33,15 +33,18 @@ public class JUnit38ClassRunner extends Runner implements Filterable, Orderable 
             this.notifier = notifier;
         }
 
+        @Override
         public void endTest(Test test) {
             notifier.fireTestFinished(asDescription(test));
         }
 
+        @Override
         public void startTest(Test test) {
             notifier.fireTestStarted(asDescription(test));
         }
 
         // Implement junit.framework.TestListener
+        @Override
         public void addError(Test test, Throwable e) {
             Failure failure = new Failure(asDescription(test), e);
             notifier.fireTestFailure(failure);
@@ -67,6 +70,7 @@ public class JUnit38ClassRunner extends Runner implements Filterable, Orderable 
             }
         }
 
+        @Override
         public void addFailure(Test test, AssertionFailedError t) {
             addError(test, t);
         }
@@ -146,6 +150,7 @@ public class JUnit38ClassRunner extends Runner implements Filterable, Orderable 
         return String.format("TestSuite with %s tests%s", count, example);
     }
 
+    @Override
     public void filter(Filter filter) throws NoTestsRemainException {
         if (getTest() instanceof Filterable) {
             Filterable adapter = (Filterable) getTest();
@@ -167,6 +172,7 @@ public class JUnit38ClassRunner extends Runner implements Filterable, Orderable 
         }
     }
 
+    @Override
     public void sort(Sorter sorter) {
         if (getTest() instanceof Sortable) {
             Sortable adapter = (Sortable) getTest();
@@ -179,6 +185,7 @@ public class JUnit38ClassRunner extends Runner implements Filterable, Orderable 
      *
      * @since 4.13
      */
+    @Override
     public void order(Orderer orderer) throws InvalidOrderingException {
         if (getTest() instanceof Orderable) {
             Orderable adapter = (Orderable) getTest();

@@ -73,6 +73,7 @@ public class DisableOnDebug implements TestRule {
     /**
      * @see TestRule#apply(Statement, Description)
      */
+    @Override
     public Statement apply(Statement base, Description description) {
         if (debugging) {
             return base;

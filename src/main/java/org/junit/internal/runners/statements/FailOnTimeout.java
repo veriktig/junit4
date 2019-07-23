@@ -282,6 +282,7 @@ public class FailOnTimeout extends Statement {
     private class CallableStatement implements Callable<Throwable> {
         private final CountDownLatch startLatch = new CountDownLatch(1);
 
+        @Override
         public Throwable call() throws Exception {
             try {
                 startLatch.countDown();

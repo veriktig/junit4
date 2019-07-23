@@ -42,10 +42,12 @@ public class JUnit4TestAdapter implements Test, Filterable, Orderable, Describab
         fRunner = Request.classWithoutSuiteMethod(newTestClass).getRunner();
     }
 
+    @Override
     public int countTestCases() {
         return fRunner.testCount();
     }
 
+    @Override
     public void run(TestResult result) {
         fRunner.run(fCache.getNotifier(result, this));
     }
@@ -60,6 +62,7 @@ public class JUnit4TestAdapter implements Test, Filterable, Orderable, Describab
         return fNewTestClass;
     }
 
+    @Override
     public Description getDescription() {
         Description description = fRunner.getDescription();
         return removeIgnored(description);
@@ -88,10 +91,12 @@ public class JUnit4TestAdapter implements Test, Filterable, Orderable, Describab
         return fNewTestClass.getName();
     }
 
+    @Override
     public void filter(Filter filter) throws NoTestsRemainException {
         filter.apply(fRunner);
     }
 
+    @Override
     public void sort(Sorter sorter) {
         sorter.apply(fRunner);
     }
@@ -101,6 +106,7 @@ public class JUnit4TestAdapter implements Test, Filterable, Orderable, Describab
      *
      * @since 4.13
      */
+    @Override
     public void order(Orderer orderer) throws InvalidOrderingException {
         orderer.apply(fRunner);
     }

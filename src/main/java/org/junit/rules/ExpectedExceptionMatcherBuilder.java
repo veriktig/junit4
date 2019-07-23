@@ -23,6 +23,7 @@ class ExpectedExceptionMatcherBuilder {
         return !matchers.isEmpty();
     }
 
+    @SuppressWarnings("deprecation")
     Matcher<Throwable> build() {
         return isThrowable(allOfTheMatchers());
     }

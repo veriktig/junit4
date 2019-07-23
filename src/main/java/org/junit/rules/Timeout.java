@@ -150,6 +150,7 @@ public class Timeout implements TestRule {
             .build(statement);
     }
 
+    @Override
     public Statement apply(Statement base, Description description) {
         try {
             return createFailOnTimeoutStatement(base);

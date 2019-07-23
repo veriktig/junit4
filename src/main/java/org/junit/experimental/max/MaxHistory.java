@@ -136,6 +136,7 @@ public class MaxHistory implements Serializable {
     }
 
     private class TestComparator implements Comparator<Description> {
+        @Override
         public int compare(Description o1, Description o2) {
             // Always prefer new tests
             if (isNewTest(o1)) {

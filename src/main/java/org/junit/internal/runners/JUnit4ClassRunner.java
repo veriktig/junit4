@@ -48,6 +48,7 @@ public class JUnit4ClassRunner extends Runner implements Filterable, Sortable {
     @Override
     public void run(final RunNotifier notifier) {
         new ClassRoadie(notifier, testClass, getDescription(), new Runnable() {
+            @Override
             public void run() {
                 runMethods(notifier);
             }
@@ -121,6 +122,7 @@ public class JUnit4ClassRunner extends Runner implements Filterable, Sortable {
         return method.getAnnotations();
     }
 
+    @Override
     public void filter(Filter filter) throws NoTestsRemainException {
         for (Iterator<Method> iter = testMethods.iterator(); iter.hasNext(); ) {
             Method method = iter.next();
@@ -133,8 +135,10 @@ public class JUnit4ClassRunner extends Runner implements Filterable, Sortable {
         }
     }
 
+    @Override
     public void sort(final Sorter sorter) {
         Collections.sort(testMethods, new Comparator<Method>() {
+            @Override
             public int compare(Method o1, Method o2) {
                 return sorter.compare(methodDescription(o1), methodDescription(o2));
             }

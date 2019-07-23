@@ -164,6 +164,7 @@ public class ExpectedException implements TestRule {
         return this;
     }
 
+    @Override
     public Statement apply(Statement base,
             org.junit.runner.Description description) {
         return new ExpectedExceptionStatement(base);

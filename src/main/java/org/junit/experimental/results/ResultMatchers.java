@@ -4,7 +4,6 @@ import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
-import org.junit.runner.notification.Failure;
 
 /**
  * Matchers on a PrintableResult, to enable JUnit self-tests.
@@ -36,6 +35,7 @@ public class ResultMatchers {
      */
     public static Matcher<PrintableResult> failureCountIs(final int count) {
         return new TypeSafeMatcher<PrintableResult>() {
+            @Override
             public void describeTo(Description description) {
                 description.appendText("has " + count + " failures");
             }
@@ -52,10 +52,12 @@ public class ResultMatchers {
      */
     public static Matcher<Object> hasSingleFailureContaining(final String string) {
         return new BaseMatcher<Object>() {
+            @Override
             public boolean matches(Object item) {
                 return item.toString().contains(string) && failureCountIs(1).matches(item);
             }
 
+            @Override
             public void describeTo(Description description) {
                 description.appendText("has single failure containing " + string);
             }
@@ -74,6 +76,7 @@ public class ResultMatchers {
                 return item.failureCount() == 1 && matcher.matches(item.failures().get(0).getException());
             }
 
+            @Override
             public void describeTo(Description description) {
                 description.appendText("has failure with exception matching ");
                 matcher.describeTo(description);
@@ -92,6 +95,7 @@ public class ResultMatchers {
                 return item.failureCount() > 0 && item.toString().contains(string);
             }
 
+            @Override
             public void describeTo(Description description) {
                 description.appendText("has failure containing " + string);
             }
