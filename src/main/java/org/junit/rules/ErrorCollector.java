@@ -1,6 +1,5 @@
 package org.junit.rules;
 
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -10,6 +9,7 @@ import java.util.concurrent.Callable;
 import org.junit.function.ThrowingRunnable;
 import org.junit.internal.AssumptionViolatedException;
 import org.hamcrest.Matcher;
+import org.hamcrest.MatcherAssert;
 import org.junit.runners.model.MultipleFailureException;
 
 /**
@@ -61,10 +61,7 @@ public class ErrorCollector extends Verifier {
     /**
      * Adds a failure to the table if {@code matcher} does not match {@code value}.
      * Execution continues, but the test will fail at the end if the match fails.
-     *
-     * @deprecated use {@code org.hamcrest.junit.ErrorCollector.checkThat()}
      */
-    @Deprecated
     public <T> void checkThat(final T value, final Matcher<T> matcher) {
         checkThat("", value, matcher);
     }
@@ -73,15 +70,12 @@ public class ErrorCollector extends Verifier {
      * Adds a failure with the given {@code reason}
      * to the table if {@code matcher} does not match {@code value}.
      * Execution continues, but the test will fail at the end if the match fails.
-     *
-     * @deprecated use {@code org.hamcrest.junit.ErrorCollector.checkThat()}
      */
-    @Deprecated
     public <T> void checkThat(final String reason, final T value, final Matcher<T> matcher) {
         checkSucceeds(new Callable<Object>() {
             @Override
             public Object call() throws Exception {
-                assertThat(reason, value, matcher);
+                MatcherAssert.assertThat(reason, value, matcher);
                 return value;
             }
         });

@@ -4,11 +4,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
-import org.junit.runner.JUnitCore;
+import org.junit.runner.MainRunner;
 
 public class JUnitCoreReturnsCorrectExitCodeTest {
 
-    static public class Fail {
+    public static class Fail {
         @Test
         public void kaboom() {
             fail();
@@ -25,7 +25,7 @@ public class JUnitCoreReturnsCorrectExitCodeTest {
         runClass("Foo", 1);
     }
 
-    static public class Succeed {
+    public static class Succeed {
         @Test
         public void peacefulSilence() {
         }
@@ -37,11 +37,7 @@ public class JUnitCoreReturnsCorrectExitCodeTest {
     }
 
     private void runClass(final String className, int returnCode) {
-        Integer exitValue = new MainRunner().runWithCheckForSystemExit(new Runnable() {
-            public void run() {
-                JUnitCore.main(className);
-            }
-        });
-        assertEquals(Integer.valueOf(returnCode), exitValue);
+        int exitValue = MainRunner.runMain(className);
+        assertEquals(returnCode, exitValue);
     }
 }

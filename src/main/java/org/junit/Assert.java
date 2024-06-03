@@ -596,7 +596,7 @@ public class Assert {
     public static void assertNotEquals(String message, float unexpected,
             float actual, float delta) {
         if (!floatIsDifferent(unexpected, actual, delta)) {
-            failEquals(message, actual);
+            failEquals(message, Float.valueOf(actual));
         }
     }
 
@@ -923,8 +923,7 @@ public class Assert {
      * @param matcher an expression, built of {@link Matcher}s, specifying allowed
      * values
      * @see org.hamcrest.CoreMatchers
-     * @see org.hamcrest.MatcherAssert
-     * @deprecated use {@code org.hamcrest.junit.MatcherAssert.assertThat()}
+     * @deprecated use {@code org.hamcrest.MatcherAssert.assertThat()}
      */
     @Deprecated
     public static <T> void assertThat(T actual, Matcher<? super T> matcher) {
@@ -957,8 +956,7 @@ public class Assert {
      * @param matcher an expression, built of {@link Matcher}s, specifying allowed
      * values
      * @see org.hamcrest.CoreMatchers
-     * @see org.hamcrest.MatcherAssert
-     * @deprecated use {@code org.hamcrest.junit.MatcherAssert.assertThat()}
+     * @deprecated use {@code org.hamcrest.MatcherAssert.assertThat()}
      */
     @Deprecated
     public static <T> void assertThat(String reason, T actual,
