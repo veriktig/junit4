@@ -18,7 +18,7 @@ public class JUnitMatchers {
      * @deprecated Please use {@link CoreMatchers#hasItem(Object)} instead.
      */
     @Deprecated
-    public static <T> Matcher<Iterable<? super T>> hasItem(T element) {
+    public static <T> Matcher<Iterable<? extends T>> hasItem(T element) {
         return CoreMatchers.hasItem(element);
     }
 
@@ -27,7 +27,7 @@ public class JUnitMatchers {
      * @deprecated Please use {@link CoreMatchers#hasItem(Matcher)} instead.
      */
     @Deprecated
-    public static <T> Matcher<Iterable<? super T>> hasItem(Matcher<? super T> elementMatcher) {
+    public static <T> Matcher<Iterable<? extends T>> hasItem(Matcher<? super T> elementMatcher) {
         return CoreMatchers.<T>hasItem(elementMatcher);
     }
 
@@ -37,7 +37,7 @@ public class JUnitMatchers {
      */
     @SafeVarargs
 	@Deprecated
-    public static <T> Matcher<Iterable<T>> hasItems(T... elements) {
+    public static <T> Matcher<Iterable<? extends T>> hasItems(T... elements) {
         return CoreMatchers.hasItems(elements);
     }
 
@@ -49,7 +49,7 @@ public class JUnitMatchers {
      */
     @SafeVarargs
 	@Deprecated
-    public static <T> Matcher<Iterable<T>> hasItems(Matcher<? super T>... elementMatchers) {
+    public static <T> Matcher<Iterable<? extends T>> hasItems(Matcher<? super T>... elementMatchers) {
         return CoreMatchers.hasItems(elementMatchers);
     }
 
